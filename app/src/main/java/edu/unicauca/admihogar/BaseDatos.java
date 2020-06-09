@@ -1,8 +1,10 @@
 package edu.unicauca.admihogar;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -55,4 +57,39 @@ class BaseDatos extends SQLiteOpenHelper {
         onCreate(db);
 
     }
+    //12)Metodo agregar producto,agregamos tres parametros, nombre,categoria,precio que es
+    //de tipo entero
+    void agregarproducto(String nombre, String categoria, int precio){
+        /*Creamos un objeto de base de datos SQLite
+        asignamos un nombre, y usamos una palabra clave
+        para hacer referencia nuestra clase de ayuda abierta SQLite
+        y se usa su metodo de escritura*/
+        SQLiteDatabase db = this.getWritableDatabase();
+        //Objeto de valores de contenido para almacenar todos los datos de la aplicacion
+        //se pasara nuestra tabla de base de datos
+        ContentValues cv = new ContentValues();
+        /*le asigne el nombre correcto, el 1 parametro es la clave de nombre
+        su valor seran datos,por lo que la clave sera la COLUMNA_NOMBRE, no
+        necesitamos la COLUMNA_ID porque se incrementa automaticamente,
+        el 2 parametro seran los nombres y se repite lo mismo para categoria y precio*/
+        cv.put(COLUMNA_NOMBRE, nombre);
+        cv.put(COLUMNA_CATEGORIA, categoria);
+        cv.put(COLUMNA_PRECIO, precio);
+        /*uso de SQLite para insertar los datos dentro de la tabla de base de datos
+        se inserta el nombre de la tabla (db)
+        vamos a decirle que almacene el resultaod dentro de nuestor metodo de inserccion
+        dentro de variable de resultado*/
+        long resultado = db.insert(NOMBRE_TABLA, null, cv);
+        //Vamos a decir si este resultaod es igual a -1, lo que significa que nuestra
+        //aplicacion no pudo insertar los datos, sera el primer parametro para nuestro mensaje
+        if (resultado == 1){
+            Toast.makeText(context, "Falló", Toast.LENGTH_SHORT).show();
+        }else {
+            //Se mostrara un mensaje que nuestra tarea agregar un producto a sido exitoso
+            //Ahora llamamos a nuestro metodo de agregar activida en AgregarActivity
+            Toast.makeText(context, "Agregado con Exito", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 }
