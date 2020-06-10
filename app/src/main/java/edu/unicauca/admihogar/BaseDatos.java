@@ -2,6 +2,7 @@ package edu.unicauca.admihogar;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -77,7 +78,7 @@ class BaseDatos extends SQLiteOpenHelper {
         cv.put(COLUMNA_PRECIO, precio);
         /*uso de SQLite para insertar los datos dentro de la tabla de base de datos
         se inserta el nombre de la tabla (db)
-        vamos a decirle que almacene el resultaod dentro de nuestor metodo de inserccion
+        vamos a decirle que almacene el resultado dentro de nuestro metodo de inserccion
         dentro de variable de resultado*/
         long resultado = db.insert(NOMBRE_TABLA, null, cv);
         //Vamos a decir si este resultaod es igual a -1, lo que significa que nuestra
@@ -91,5 +92,25 @@ class BaseDatos extends SQLiteOpenHelper {
         }
 
     }
+    /*14) (PART #3 VIDEO)Creamos un nuevo metodo, para devolver un objeto cursor
+    para leer los datos de nuestra tabla de base de datos,el cursor contendra todos
+    //los datos de nuestra tabla, todos los datos se llamaran dentro de nuestra actividad
+    //principal donde utilizaremos el RecyclerView
+*/
+    Cursor LeerTodosDatos(){
+        //Primero creamos una consulta, para seleccionar todos los dados
+        //de la tabla de base de datos
+        String query = " SELECT * FROM " + NOMBRE_TABLA;
+        //Creamos un objeto de base de datos, va a utilizar la base de datos get
+        SQLiteDatabase db = this.getReadableDatabase();
+        //Creo un cursor y se configura
+        Cursor cursor = null;
+        if (db != null){//almacenamos el resultado dentro del cursor
+           cursor = db.rawQuery(query, null);
+
+        }//devolvemos un objeto cursor
+        return cursor;
+    }
+
 
 }
