@@ -1,5 +1,6 @@
 package edu.unicauca.admihogar;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -68,10 +69,18 @@ public class MainActivity extends AppCompatActivity {
         //diferentes, y usamos esas matrices, y podremoos tomar los datos almacenados dentro de
         //nuestras matrices y es entonces ue podremos pasarlos en un
         //adaptador personalizado
-        adaptadorPersonalizado = new AdaptadorPersonalizado(MainActivity.this, id_producto, nombre_producto,
+        adaptadorPersonalizado = new AdaptadorPersonalizado(MainActivity.this, this, id_producto, nombre_producto,
                 categoria_producto, precio_producto);
         recyclerView.setAdapter(adaptadorPersonalizado);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+    }
+    //26)Vasmo a configurar si solicita un resultado
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+            recreate();
+        }
     }
     /*16)(#17 en clase AdaptadorPersonalizado)
     Creamos un nuevo metodo de nuestra actividad principal

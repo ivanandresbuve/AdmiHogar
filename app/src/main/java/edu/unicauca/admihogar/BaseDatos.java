@@ -31,7 +31,7 @@ class BaseDatos extends SQLiteOpenHelper {
     //el cuarto sera el precio del producto
     private static final String  COLUMNA_PRECIO = "precio_producto";
 
-    public BaseDatos(@Nullable Context context) {
+    BaseDatos(@Nullable Context context) {
         //7)pegamos ahora NOMBRE_BASEDATOS y la VERSION_BASE DATOS
         super(context, NOMBRE_BASEDATOS , null, VERSION_BASEDATOS);
         this.context = context;
@@ -111,6 +111,33 @@ class BaseDatos extends SQLiteOpenHelper {
         }//devolvemos un objeto cursor
         return cursor;
     }
+    //24)metodo
+    void actualizarDatos(String fila_id, String nombre, String categoria, String precio){
+        //vamos a obtenenr una base de datos grabable
+        //para escribir nuestra tabla de base de datos
+        SQLiteDatabase db = this.getWritableDatabase();
+        //usamos el ell objeto de valores de contenido y almacenamos los valores
+        //dentro de esdte objeto
+        ContentValues cv = new ContentValues();
+        //ahora uso su metod put  y usamos una clave y un valor, para la clave sera
+        //el la COLUMNA_NOMBRE, y el segundo sera COLUMNA_CATEGORIA, el tercero sera
+        //COLUMNA_PRECIO y agregamos lo diferentes valores
+        cv.put(COLUMNA_NOMBRE,nombre);
+        cv.put(COLUMNA_CATEGORIA,categoria);
+        cv.put(COLUMNA_PRECIO,precio);
 
+        //Queremos pasar esos datos aqui, los resultados deben guardarse en
+        //este valor largo, estos datos de actualizacion los llamamos
+        // dentro de la ActualizarActivity >25
+        long result = db.update(NOMBRE_TABLA, cv, "_id= ?", new String[]{fila_id});
+        // si el resultado es igual a -1 (lo que significa que no hay datos o es un error)
+        if(result == -1){
+            Toast.makeText(context, "Error al actualizar", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Actualizacion Exitosa", Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
 
 }
