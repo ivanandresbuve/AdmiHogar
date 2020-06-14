@@ -129,7 +129,7 @@ class BaseDatos extends SQLiteOpenHelper {
         //Queremos pasar esos datos aqui, los resultados deben guardarse en
         //este valor largo, estos datos de actualizacion los llamamos
         // dentro de la ActualizarActivity >25
-        long result = db.update(NOMBRE_TABLA, cv, "_id= ?", new String[]{fila_id});
+        long result = db.update(NOMBRE_TABLA, cv, "_id=?", new String[]{fila_id});
         // si el resultado es igual a -1 (lo que significa que no hay datos o es un error)
         if(result == -1){
             Toast.makeText(context, "Error al actualizar", Toast.LENGTH_SHORT).show();

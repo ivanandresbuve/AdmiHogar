@@ -12,7 +12,7 @@
         android:id="@+id/entrada_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Nombre del Producto"
         android:inputType="textPersonName"

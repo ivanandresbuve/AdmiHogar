@@ -28,8 +28,6 @@ public class ActualizarActivity extends AppCompatActivity {
         entrada_categoria = findViewById(R.id.entrada_categoria2);
         entrada_precio = findViewById(R.id.entrada_precio2);
         boton_actualizar = findViewById(R.id.boton_actualizar);
-
-
         //23)llamamos a nuestro metodo
         // con esto ya podemos visualizar nuestro producto al hacer clic en el RecyclerView
         getAndSetIntentData();
@@ -40,9 +38,11 @@ public class ActualizarActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //25)establecemos que queremos pasarlos dentro de nuestro nuevo metodo
                 BaseDatos MiDB = new BaseDatos(ActualizarActivity.this);
+                nombre = entrada_nombre.getText().toString().trim();
+                categoria = entrada_categoria.getText().toString().trim();
+                precio = entrada_precio.getText().toString().trim();
                 //y solo entonces llamamos a esto
                 MiDB.actualizarDatos(id, nombre, categoria, precio);
-
             }
         });
 

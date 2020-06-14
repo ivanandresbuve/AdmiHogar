@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -28,11 +29,8 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
     private ArrayList id_producto, nombre_producto, categoria_producto, precio_producto;
 
 
-    AdaptadorPersonalizado(Activity activity, Context context,
-                           ArrayList id_producto,
-                           ArrayList nombre_producto,
-                           ArrayList categoria_producto,
-                           ArrayList precio_producto ){
+    AdaptadorPersonalizado(Activity activity, Context context, ArrayList id_producto, ArrayList nombre_producto, ArrayList categoria_producto, ArrayList precio_producto )
+    {
         this.activity = activity;
         this.context = context;
         //vamos a establecer esos valores a nuestras variables globales para
@@ -41,7 +39,6 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
         this.nombre_producto = nombre_producto;
         this.categoria_producto = categoria_producto;
         this.precio_producto = precio_producto;
-
     }
 
     /*17Implementamos tre diferentes metodos para nuestro RecyclerView*/
@@ -86,8 +83,6 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
                 intent.putExtra("categoria",String.valueOf(categoria_producto.get(position)));
                 intent.putExtra("precio",String.valueOf(precio_producto.get(position)));
                 activity.startActivityForResult(intent, 1);
-
-
             }
         });
     }
@@ -103,13 +98,13 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
     /*17)La clase extiende la vista de RecyclerView de la vista de puntos, luego de esto
     creamos una nuevo diseño para nuestra fila de RecyclerView, para agregar
     una vista de tarjeta*/
-    public class MiSoporteDeVista extends RecyclerView.ViewHolder {
+    class MiSoporteDeVista extends RecyclerView.ViewHolder {
         //18)Creamos un texto diferente
         TextView producto_id_txt, producto_nombre_txt, producto_categoria_txt, producto_precio_txt;
         //20) (PART 4)Agregamos el diseño lineal y encontramos la identificacion
-        LinearLayout mainLayout;
+        ConstraintLayout mainLayout;
 
-        public MiSoporteDeVista(@NonNull View itemView) {
+        MiSoporteDeVista(@NonNull View itemView) {
             super(itemView);
             //Obtenenmos la identificacion de esas vistas de texto
             producto_id_txt = itemView.findViewById(R.id.producto_id_txt);
