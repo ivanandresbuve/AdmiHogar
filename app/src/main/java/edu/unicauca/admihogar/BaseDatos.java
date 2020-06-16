@@ -139,5 +139,32 @@ class BaseDatos extends SQLiteOpenHelper {
         }
 
     }
+    /*27) Creamos un metodo vacio, es decir no devolvera nada, este metodo
+   solo eliminara una fila de la tabla de nuestra base de datos*/
+    void eliminarUnaFila(String fila_id){
+        /*creamos un objeto de base de datos SQLite y hacemos uso del
+        metodo de eliminacion, le decimos que elimine el nombre de la tabla
+        en la que estamos y la ID, alamacenamos el resultado de nuestro
+        metodo en la variable along*/
+        SQLiteDatabase db = this.getWritableDatabase ();
+        long resultado = db.delete(NOMBRE_TABLA, "_id=?", new String[]{fila_id});
+        /*Si resultado es igual a -1, significa que hay algunos errores, sino
+        diremos que se elimino con exito, ahora debemos llamar este metodo
+        desde nuestra activida ActualizarActivity*/
+        if (resultado == -1){
+            Toast.makeText(context, "No se pudo eliminar", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Eliminado", Toast.LENGTH_SHORT).show();
+        }
+    }
+    // 30) creamos un nuevo metodo, este metodo eliminara todos los elementos de la tabla
+    //de base de datos (31 ESTA EN MainActivity)
+    void eliminarTodosDatos(){
+        //agregamos un objeto de la base de datos SQLite
+        SQLiteDatabase db = this.getWritableDatabase();
+        //nuestra consulta lo hara
+        db.execSQL("DELETE FROM " + NOMBRE_TABLA);
+
+    }
 
 }

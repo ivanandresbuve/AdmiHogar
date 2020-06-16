@@ -12,7 +12,7 @@
         android:id="@+id/entrada_nombre2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
         android:hint="Nombre del Producto"
         android:inputType="textPersonName"
@@ -59,4 +59,19 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/entrada_precio2" />
+
+    <Button
+        android:id="@+id/boton_eliminar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="36dp"
+        android:background="@color/colorPrimary"
+        android:ems="10"
+        android:text="ELIMINAR"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boton_actualizar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
