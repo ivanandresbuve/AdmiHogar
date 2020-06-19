@@ -12,66 +12,77 @@
         android:id="@+id/entrada_nombre2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="Nombre del Producto"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/entrada_categoria2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/entrada_categoria2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="Categoria del Producto"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/entrada_precio2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/entrada_nombre2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/entrada_precio2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Precio del Producto"
         android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/boton_actualizar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.429"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/entrada_categoria2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/boton_actualizar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="40dp"
-        android:text="ACTUALIZAR"
-        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="12dp"
         android:background="@color/colorPrimary"
         android:ems="10"
+        android:text="ACTUALIZAR"
         android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toTopOf="@+id/boton_eliminar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/entrada_precio2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/boton_eliminar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/colorPrimary"
         android:ems="10"
         android:text="ELIMINAR"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="184dp"
+        android:layout_height="179dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton_actualizar" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_edit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

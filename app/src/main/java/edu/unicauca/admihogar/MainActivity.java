@@ -127,6 +127,12 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflader = getMenuInflater();
         inflader.inflate(R.menu.mi_menu, menu);
         return super.onCreateOptionsMenu(menu);
+        //Metodo boton para acerca app
+
+    }
+    public void acerca (View view){
+        Intent acerca = new Intent (this,AcercaApp_Activity.class);
+        startActivity(acerca);
     }
     //este metodo activara el onclicklistener para nuestras opciones de menu
     //o elementos de menu, el 30 esta en BaseDatos
